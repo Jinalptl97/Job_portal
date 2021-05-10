@@ -83,3 +83,9 @@
   text-decoration: none;
 }
 
+.post-photo .post-image-holder{
+  display: table-cell;
+  width: auto;
+  background: url(../../assets/img/job_post.jpg);
+  background-size: cover;
+}

@@ -19,7 +19,8 @@
 <body>
     <section class="register-photo" style="height:70%">
         <div class="form-container" >
-            <div class="image-holder"></div>
+            <!-- <div class="image-holder"></div> -->
+            <div class="post-photo"></div>
             <form method="post">
                 <h2 class="text-center"><strong>Upload</strong>Job</h2>
                 <div class="form-group"><input class="form-control" type="text" name="job" placeholder="Job Title"></div>
@@ -29,7 +30,7 @@
 				 <div class="form-group"><input class="form-control" type="text" name="location" placeholder="Location"></div>
 				 <div class="form-group"><input class="form-control" type="text" name="Address" placeholder="Address"></div>
 				 <div class="form-group"><input class="form-control" type="text" name="Postcode" placeholder="Postcode"></div>
-				 
+				 <div class="form-group"><input class="form-control" type="number" name="experience" placeholder="Experience"></div>
 				 
 	
 	
