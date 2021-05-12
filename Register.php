@@ -61,3 +61,9 @@
 </body>
 
 </html> 
+
+<?php
+include('connect.php');
+
+
+?>

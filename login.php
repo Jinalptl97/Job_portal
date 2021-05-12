@@ -35,3 +35,25 @@
 </body>
 
 </html>
+
+<?php
+
+include('connect.php');
+
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+$sql= "SELECT * FROM user WHERE email = '$email' AND password = '$password' ";
+$result = mysqli_query($conn,$sql);
+$check = mysqli_fetch_array($result);
+if(isset($check))
+{
+    echo 'success';
+}
+else
+{
+    echo 'failure';
+}
+
+
+?>
