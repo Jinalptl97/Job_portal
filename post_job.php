@@ -19,32 +19,21 @@
 <body>
     <section class="register-photo" style="height:70%">
         <div class="form-container" >
-            <!-- <div class="image-holder"></div> -->
-            <div class="post-photo"></div>
-            <form method="post">
+            
+            <form method="post" enctype="multipart/form-data">
                 <h2 class="text-center"><strong>Upload</strong>Job</h2>
                 <div class="form-group"><input class="form-control" type="text" name="job" placeholder="Job Title"></div>
 				 <div class="form-group"><input class="form-control" type="text" name="job description" placeholder="Job description"></div>
 				  <div class="form-group"><input class="form-control" type="number" name="vacancy" placeholder="Vacancy number"></div>
                 <div class="form-group"><input class="form-control" type="number" name="basicpay" placeholder="Basic Pay"></div>
 				 <div class="form-group"><input class="form-control" type="text" name="location" placeholder="Location"></div>
-				 <div class="form-group"><input class="form-control" type="text" name="Address" placeholder="Address"></div>
-				 <div class="form-group"><input class="form-control" type="text" name="Postcode" placeholder="Postcode"></div>
+				 <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Address"></div>
+				 <div class="form-group"><input class="form-control" type="text" name="postcode" placeholder="Postcode"></div>
 				 <div class="form-group"><input class="form-control" type="number" name="experience" placeholder="Experience"></div>
-				 
+				 <div class="form-group"><input class="form-control" type="text" name="min_graduation" placeholder="Minimum Graduation"></div>
+                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Post Job</button></div>
 	
-	
-	
- 
-  
-</div>
-<br><br>
-<div class="form-group"><input class="form-control" type="text" name="Phonenumber" placeholder="phone number"></div>
-
-				 
-                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Post Job</button></div>
             </form>
-        </div>
 		</div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -54,3 +43,40 @@
 </body>
 
 </html>
+
+<?php 
+include 'connect.php'; 
+
+if(isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
+{
+
+    $job = $_POST['job'];
+    $jobdescription= $_POST['job description'];
+    $vacancy = $_POST['vacancy'];
+    $experience = $_POST['experience'];
+    $basicpay = md5($_POST['basicpay']);
+    $location = $_POST['location'];
+    $address = $_POST['address'];
+    $min_graduation = $p_post["min_graduation"];
+    $postcode = $_POST['postcode'];
+    
+    
+
+
+    $query = "INSERT INTO `job_info`(`job_title`, `job_description`, `vacancy_no`, `experience`, `basic_pay`, `location`, `last_graduation`, `poscode`) 
+                    VALUES ('$job','$jobdescription','$vacancy','$experience','$basicpay','$location','$min_graduation','$postcode')";
+
+    if (mysqli_query($conn, $query))
+    {
+        echo "New record created successfully";
+        move_uploaded_file($tempname, $folder);
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+
+}
+
+
+?>

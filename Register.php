@@ -20,37 +20,41 @@
     <section class="register-photo" style="height:70%">
         <div class="form-container" >
             <div class="image-holder"></div>
-            <form method="post">
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
-                <div class="form-group"><input class="form-control" type="text" name="First name" placeholder="First name"></div>
-				 <div class="form-group"><input class="form-control" type="text" name="Last name" placeholder="last name"></div>
-				  <div class="form-group"><input class="form-control" type="Email" name="Email" placeholder="Email"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-				 <div class="form-group"><input class="form-control" type="password" name="Confirm password" placeholder="Confirm Password"></div>
-				 <div class="form-group"><input class="form-control" type="text" name="Address" placeholder="Address"></div>
-				 <div class="form-group"><input class="form-control" type="text" name="Postcode" placeholder="Postcode"></div>
+            <form method="post"  enctype="multipart/form-data">
+            <h2 class="text-center"><strong>Create</strong> an account.</h2>
+            <div class="form-group"><input class="form-control" type="text" name="firstName" placeholder="First name"></div>
+            <div class="form-group"><input class="form-control" type="text" name="lastName" placeholder="last name"></div>
+            <div class="form-group"><input class="form-control" type="Email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><input class="form-control" type="password" name="Confirm password" placeholder="Confirm Password"></div>
+            <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Address"></div>
+            <div class="form-group"><input class="form-control" type="text" name="postcode" placeholder="Postcode"></div>
+            <div class="form-group"><input class="form-control" type="text" name="phoneNumber" placeholder="phone number"></div>
+            <div class="form-group">
+                <label>Choose Role : </label>
+                <select name="role">
+                    <option>Job Seeker</option>
+                    <option>Job Recruiter</option>
+                </select>
+            </div>
 
+            <div class="custom-file">
+                <input type="file" name="image" id="customFile">
 
-	<label>Choose Role : </label>
-    <select>
-		<option>Job Seeker</option>
-		<option>Job Recruiter</option>
-	</select>
+            </div>
+            <br><br>
+            
 
-
-  <div class="custom-file">
-  <input type="file"  id="customFile">
-
-</div>
-<br><br>
-<div class="form-group"><input class="form-control" type="text" name="Phone number" placeholder="phone number"></div>
-
-
-                <div class="form-group">
-                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label"><input class="form-check-input"
+                            type="checkbox">I agree to the license terms.</label>
                 </div>
-                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a class="already" href="login.html">You already have an account? Login here.</a>
-            </form>
+            </div>
+            <div class="form-group"><button class="btn btn-primary btn-block" name="submit" type="submit">Sign Up</button>
+        </div>
+        <a class="already" href="login.php">You already have an account? Login here.</a>
+        </form>
         </div>
 		</div>
     </section>
@@ -62,8 +66,41 @@
 
 </html> 
 
-<?php
-include('connect.php');
+
+<?php 
+include 'connect.php'; 
+
+if(isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
+{
+
+    $firstName = $_POST['firstName'];
+    $lastName= $_POST['lastName'];
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $phoneNumber = $_POST['phoneNumber'];
+    $address = $_POST['address'];
+    $postcode = $_POST['postcode'];
+    $role = $_POST['role'];
+
+    $filename = $_FILES["image"]["name"];
+    $tempname = $_FILES["image"]["tmp_name"];    
+    $folder = "images/".$filename;
+
+
+    $query = "INSERT INTO `users`(`fname`, `lname`, `email`, `password`, `address`, `postcode`, `role`, `contact_no`, `photo`) 
+                    VALUES ('$firstName','$lastName','$email','$password','$address','$postcode','$role','$phoneNumber','$folder')";
+
+    if (mysqli_query($conn, $query))
+    {
+        echo "New record created successfully";
+        move_uploaded_file($tempname, $folder);
+    } 
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+
+}
 
 
 ?>
