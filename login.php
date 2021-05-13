@@ -48,23 +48,25 @@ if(isset($_POST['submit']))
 {
     $email = $_POST['email'];
     $password = md5($_POST['password']);
-    $sql= "SELECT email, password FROM users WHERE email = '$email' AND password = '$password' ";
+    $sql= "SELECT role, user_id, email, password FROM users WHERE email = '$email' AND password = '$password' ";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_array($result);
 
     if($row)
     {
-        $sql1= "select role from users where role='jobseeker'";
-        if($sql==$sql1)
-        {
-            echo $sql1;
-           // header("location: jobs.php");
-        }
-        else
-        {
+        if($row['role']=="Job Recruiter")
+            {
+                header("location: application.php");
+            }
+            else if($row['role']=="Job Seeker")
+            {
 
-           // header("location: application.php");
-        }
+                header("location: jobs.php");
+            }
+            else
+            {
+                echo "Error";
+            }
     }
     else
     {
