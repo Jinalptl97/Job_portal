@@ -94,6 +94,8 @@ if(isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
     {
         echo "New record created successfully";
         move_uploaded_file($tempname, $folder);
+        header('Location: login.php');
+        
     } 
     else 
     {

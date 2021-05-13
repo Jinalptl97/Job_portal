@@ -25,7 +25,9 @@
             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="forgetpassword.html">Forgot your email or password?</a>
+            <div class="form-group"><button class="btn btn-primary btn-block" name="submit" type="submit">Log In</button></div>
+            <a class="forgot" href="forgetpassword.php">Forgot your email or password?</a><br>
+            <a class="forgot" href="Register.php">New user? Sign UP here</a>
         </form>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -40,20 +42,38 @@
 
 include('connect.php');
 
-$email = $_POST['email'];
-$password = $_POST['password'];
 
-$sql= "SELECT * FROM user WHERE email = '$email' AND password = '$password' ";
-$result = mysqli_query($conn,$sql);
-$check = mysqli_fetch_array($result);
-if(isset($check))
+
+if(isset($_POST['submit']))
 {
-    echo 'success';
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $sql= "SELECT email, password FROM users WHERE email = '$email' AND password = '$password' ";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result);
+
+    if($row)
+    {
+        $sql1= "select role from users where role='jobseeker'";
+        if($sql==$sql1)
+        {
+            echo $sql1;
+           // header("location: jobs.php");
+        }
+        else
+        {
+
+           // header("location: application.php");
+        }
+    }
+    else
+    {
+    
+        echo 'please enter valid credentials';
+
+    }
 }
-else
-{
-    echo 'failure';
-}
+
 
 
 ?>

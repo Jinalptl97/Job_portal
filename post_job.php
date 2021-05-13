@@ -23,7 +23,7 @@
             <form method="post" enctype="multipart/form-data">
                 <h2 class="text-center"><strong>Upload</strong>Job</h2>
                 <div class="form-group"><input class="form-control" type="text" name="job" placeholder="Job Title"></div>
-				 <div class="form-group"><input class="form-control" type="text" name="job description" placeholder="Job description"></div>
+				 <div class="form-group"><input class="form-control" type="text" name="jobdescription" placeholder="Job description"></div>
 				  <div class="form-group"><input class="form-control" type="number" name="vacancy" placeholder="Vacancy number"></div>
                 <div class="form-group"><input class="form-control" type="number" name="basicpay" placeholder="Basic Pay"></div>
 				 <div class="form-group"><input class="form-control" type="text" name="location" placeholder="Location"></div>
@@ -31,7 +31,7 @@
 				 <div class="form-group"><input class="form-control" type="text" name="postcode" placeholder="Postcode"></div>
 				 <div class="form-group"><input class="form-control" type="number" name="experience" placeholder="Experience"></div>
 				 <div class="form-group"><input class="form-control" type="text" name="min_graduation" placeholder="Minimum Graduation"></div>
-                 <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Post Job</button></div>
+                 <div class="form-group"><button class="btn btn-primary btn-block" name="submit" type="submit">Post Job</button></div>
 	
             </form>
 		</div>
@@ -51,25 +51,24 @@ if(isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
 {
 
     $job = $_POST['job'];
-    $jobdescription= $_POST['job description'];
+    $jobdescription= $_POST['jobdescription'];
     $vacancy = $_POST['vacancy'];
     $experience = $_POST['experience'];
-    $basicpay = md5($_POST['basicpay']);
+    $basicpay = ($_POST['basicpay']);
     $location = $_POST['location'];
     $address = $_POST['address'];
-    $min_graduation = $p_post["min_graduation"];
+    $min_graduation = $_POST["min_graduation"];
     $postcode = $_POST['postcode'];
     
     
 
 
-    $query = "INSERT INTO `job_info`(`job_title`, `job_description`, `vacancy_no`, `experience`, `basic_pay`, `location`, `last_graduation`, `poscode`) 
+    $query = "INSERT INTO `job_info`(`job_title`, `job_description`, `vacancy_no`, `experience`, `basic_pay`, `location`, `last_graduation`, `postcode`) 
                     VALUES ('$job','$jobdescription','$vacancy','$experience','$basicpay','$location','$min_graduation','$postcode')";
 
     if (mysqli_query($conn, $query))
     {
-        echo "New record created successfully";
-        move_uploaded_file($tempname, $folder);
+        header('Location: application.php');
     } 
     else 
     {
