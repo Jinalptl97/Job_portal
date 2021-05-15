@@ -23,8 +23,8 @@
         <div class="container"><a class="navbar-brand" href="#page-top">Easy jobs</a><span>It's Nice To Meet You</span><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.html">Find a JOB</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.html">create account</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.php">Find a JOB</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.php">create account</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact us</a></li>
