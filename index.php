@@ -1,3 +1,46 @@
+<?php
+
+include_once('connect.php');
+
+
+
+if(isset($_POST['login']))
+{
+    $email = $_POST['email'];
+    $password = md5($_POST['password']);
+    $sql= "SELECT role, user_id, email, password FROM users WHERE email = '$email' AND password = '$password' ";
+    $result = mysqli_query($conn,$sql);
+    $row = mysqli_fetch_array($result);
+	
+
+
+    if($row)
+    {
+        if($row['role']=="Job Recruiter")
+            {
+                header("location: application.php");
+            }
+            else if($row['role']=="Job Seeker")
+            {
+                header("location: jobs.php");
+            }
+            else
+            {
+                echo "Error";
+            }
+    }
+    else
+    {
+    
+        echo 'please enter valid credentials';
+
+    }
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -23,8 +66,8 @@
         <div class="container"><a class="navbar-brand" href="#page-top">Easy jobs</a><span>It's Nice To Meet You</span><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.html">Find a JOB</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.html">create account</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.php">Find a JOB</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.php">create account</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact us</a></li>
@@ -39,10 +82,12 @@
                     <form method="post">
                         <h2 class="sr-only">Login Form</h2>
                         <div class="illustration"></div>
-                        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                        <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+                        <div class="form-group"><input class="form-control" type="email" name="email" placeholder="email"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                        <div class="form-group"><button class="btn btn-primary btn-block" Name="login" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
                     </form>
                 </section>
+				
+
                 <div class="intro-lead-in">
                     <section class="map-clean"><img src="assets/img/conceptual-hand-writing-showing-make-easy-business-photo-text-offering-solutions-alternatives-easier-job-ideas-mega-123891828.jpg">
                         <div class="container"></div>
@@ -60,43 +105,25 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2 class="text-uppercase section-heading">Jobs</h2>
-                    <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur</h3>
+                    <h3 class="text-muted section-subheading">GET BEST JOBS</h3>
                 </div>
             </div>
             <div class="row text-center">
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Home Careers</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Jinal.</p>
                 </div>
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Cleaning</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">Meet.</p>
                 </div>
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-lock fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">security</h4>
-                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                    <p class="text-muted">hemani</p>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="bg-light" id="portfolio">
-        <div class="container"></div>
-        <section class="register-photo">
-            <div class="form-container">
-                <div class="image-holder"></div>
-                <form method="post">
-                    <h2 class="text-center"><strong>Create</strong> an account.</h2>
-                    <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-                    <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                    <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
-                    <div class="form-group">
-                        <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
-                    </div>
-                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign Up</button></div><a class="already" href="#">You already have an account? Login here.</a>
-                </form>
-            </div>
-        </section>
-    </section>
+    
     <section id="about">
         <div class="container">
             <div class="row">
@@ -404,3 +431,4 @@
 </body>
 
 </html>
+
