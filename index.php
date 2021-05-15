@@ -1,17 +1,23 @@
 <?php
-
+session_start();
 include_once('connect.php');
 
 
 
 if(isset($_POST['login']))
 {
+    
     $email = $_POST['email'];
     $password = md5($_POST['password']);
     $sql= "SELECT role, user_id, email, password FROM users WHERE email = '$email' AND password = '$password' ";
+    echo $sql;
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_array($result);
+    $_SESSION['user_id']=$row['user_id'];
 	
+    
+        
+
 
 
     if($row)
