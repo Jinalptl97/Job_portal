@@ -14,13 +14,10 @@ if(isset($_POST['login']))
     $sql= "SELECT role, user_id, email, password FROM users WHERE Email = '$email' AND password = '$password' ";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_array($result);
-    $_SESSION['user_id']=$row['user_id'];
+    $uid=$row['user_id'];
+    $_SESSION['user_id']=$uid;
 	
     
-        
-
-
-
     if($row)
     {
         if($row['role']=="Job Recruiter")
