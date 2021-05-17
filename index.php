@@ -67,7 +67,7 @@ if(isset($_POST['login']))
 
 <body id="page-top">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="#page-top">Easy jobs</a><span>It's Nice To Meet You</span><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href="#page-top">Easy jobs</a><span><strong>It's Nice To Meet You</strong></span><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.php">Find a JOB</a></li>
@@ -87,7 +87,7 @@ if(isset($_POST['login']))
                         <h2 class="sr-only">Login Form</h2>
                         <div class="illustration"></div>
                         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                        <div class="form-group"><button class="btn btn-primary btn-block" Name="login" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+                        <div class="form-group"><button class="btn btn-primary btn-block" Name="login" type="submit">Log In</button></div><a class="forgot" href="forgotpassword.php">Forgot your email or password?</a>
                     </form>
                 </section>
 				

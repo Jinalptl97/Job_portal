@@ -93,7 +93,7 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group"><button class="btn btn-primary btn-block" onclick="validationForm()" name="submit" type="submit">Sign Up</button>
                 </div>
                 <a class="already" href="index.php">You already have an account? Login here.</a>
-            </form>
+            </form>	
         </div>
         </div>
     </section>
