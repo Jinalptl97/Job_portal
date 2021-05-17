@@ -61,7 +61,7 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-container">
             <div class="image-holder"></div>
             <form method="post" name="contactForm" enctype="multipart/form-data" onsubmit="return(validateForm());">
-                <h2 class="text-center"><strong>Create</strong> an account.</h2>
+                <h2 class="text-center"><strong>Create An Account	</strong></h2>
                 <div class="form-group"><input class="form-control" type="text" name="firstName" placeholder="First name"></div>
                 <div class="form-group"><input class="form-control" type="text" name="lastName" placeholder="last name"></div>
                 <div class="form-group"><input class="form-control" type="Email" name="email" placeholder="Email"></div>
@@ -92,7 +92,7 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group"><button class="btn btn-primary btn-block" onclick="validationForm()" name="submit" type="submit">Sign Up</button>
                 </div>
-                <a class="already" href="login.php">You already have an account? Login here.</a>
+                <a class="already" href="index.php">You already have an account? Login here.</a>
             </form>
         </div>
         </div>

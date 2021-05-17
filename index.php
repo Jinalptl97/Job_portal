@@ -72,9 +72,6 @@ if(isset($_POST['login']))
                 <ul class="navbar-nav ml-auto text-uppercase">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.php">Find a JOB</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.php">create account</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact us</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="team.php">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="contact.php">Contact us</a></li>
