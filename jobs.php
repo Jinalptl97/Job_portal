@@ -25,7 +25,7 @@ $uid=$_SESSION['user_id'];
 
 <body>
 
-    <section class="register-photo" style="height:100%">
+    <section style="height:auto">
     <?php
     
     $sql= "SELECT * FROM job_info";
@@ -69,23 +69,24 @@ $uid=$_SESSION['user_id'];
                         $result = mysqli_query($conn,$sql);
                         $row1 = mysqli_fetch_array($result);
                         
-                        if(isset($row1)>0)
+                        if(isset($row1)<0)
                         {
                            
-                            
+                            $alert= "<script type='text/javascript'>alert('Please Upload Resume First');</script>";
+                            echo $alert;
+                            echo "<div class='form-group'><a href='profile.php'>Upload Resume</a></div>";
+                           
+                        }
+                        else
+                        {
                             $insert = "INSERT INTO application(`user_id`, `job_id`, `date_apply`) VALUES ('$uid','$jobid',now())";  
                            
                             if (mysqli_query($conn, $insert)) 
                             {
-                                
+                                $alert1= "<script type='text/javascript'>alert('You have successfully applied this job');</script>";
+                                echo $alert1;
                                
                             }
-                        }
-                        else
-                        {
-                            $alert= "<script type='text/javascript'>alert('Please Upload Resume First');</script>";
-                            echo $alert;
-                            //header("Location: profile.php");
                         }
                     
 
