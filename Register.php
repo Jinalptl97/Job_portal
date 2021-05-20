@@ -136,6 +136,8 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
                 </div>
                 <div class="form-group"><button class="btn btn-primary btn-block" onclick="validationForm()" name="submit" type="submit">Sign Up</button>
                 </div>
+                <div class="form-group" style="visibility: hidden;"><button class="btn btn-primary btn-block" onclick="validationForm()" name="next" id="next" type="submit">Next</button>
+                </div>
                 <a class="already" href="index.php">You already have an account? Login here.</a>
             </form>	
         </div>
@@ -155,11 +157,13 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
                 document.getElementById("uploadresume").style.visibility="hidden";
                 document.getElementById("education").style.visibility="hidden";
                 document.getElementById("skills").style.visibility="hidden";
+                document.getElementById("next").style.visibility="hidden";
             }
             else{
                 document.getElementById("uploadresume").style.visibility="visible";
                 document.getElementById("education").style.visibility="visible";
                 document.getElementById("skills").style.visibility="visible";
+                document.getElementById("next").style.visibility="visible";
             }
         } 
     </script>

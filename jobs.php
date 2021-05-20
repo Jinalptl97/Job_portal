@@ -1,15 +1,18 @@
 <?php
 session_start();
-$_SESSION['user_id'];
-echo $_SESSION['user_id'];
 include('connect.php');
+$_SESSION['user_id'];
+$uid=$_SESSION['user_id'];
+
+
 
 
    
     $sql= "SELECT * FROM job_info";
     if($result = mysqli_query($conn, $sql))
     {
-        if(mysqli_num_rows($result) > 0){
+        if(mysqli_num_rows($result) > 0)
+        {
             echo "<table border = 1>";
                 echo "<tr>";
                     echo "<th>Job </th>";
@@ -33,13 +36,13 @@ include('connect.php');
                     echo "<td>" . $row['last_graduation'] . "</td>";
                     echo "<td>" . $row['postcode'] . "</td>";
                     ?>
-                    <form><td><div class="form-group"><button class="btn btn-primary btn-block" Name="apply" type="submit">Apply</button></div></td></form>";
+                    <form><td><div class="form-group"><button class="btn btn-primary btn-block" Name="apply" type="submit">Apply</button></div></td></form>
                     <?php
                 echo "</tr>";
                 if(isset($_POST['apply']))
                 {
 
-                    $sql= "SELECT * FROM job_seeker_details WHERE user_id= '$_SESSION['user_id']' ";
+                    $sql= "SELECT * FROM job_seeker_details WHERE user_id= $uid ";
                     $result = mysqli_query($conn,$sql);
                     $row = mysqli_fetch_array($result);
                     if(empty($row))
@@ -51,15 +54,19 @@ include('connect.php');
                         
                     }
                 }
-{
+
             }
             echo "</table>";
             // Free result set
             mysqli_free_result($result);
-        } else{
+        } 
+        else
+        {
             echo "No records matching your query were found.";
         }
-    } else{
+    } 
+    else
+    {
         echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
     }
 
