@@ -85,7 +85,7 @@ $uid=$_SESSION['user_id'];
                         {
                             $alert= "<script type='text/javascript'>alert('Please Upload Resume First');</script>";
                             echo $alert;
-                            header("Location: profile.php");
+                            //header("Location: profile.php");
                         }
                     
 
