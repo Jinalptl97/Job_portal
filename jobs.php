@@ -1,5 +1,9 @@
 <?php
+session_start();
+$_SESSION['user_id'];
+echo $_SESSION['user_id'];
 include('connect.php');
+
 
    
     $sql= "SELECT * FROM job_info";
@@ -28,8 +32,26 @@ include('connect.php');
                     echo "<td>" . $row['location'] . "</td>";
                     echo "<td>" . $row['last_graduation'] . "</td>";
                     echo "<td>" . $row['postcode'] . "</td>";
-                    echo "<td> <a href='applicationform.php'>Apply</a></td>";
+                    ?>
+                    <form><td><div class="form-group"><button class="btn btn-primary btn-block" Name="apply" type="submit">Apply</button></div></td></form>";
+                    <?php
                 echo "</tr>";
+                if(isset($_POST['apply']))
+                {
+
+                    $sql= "SELECT * FROM job_seeker_details WHERE user_id= '$_SESSION['user_id']' ";
+                    $result = mysqli_query($conn,$sql);
+                    $row = mysqli_fetch_array($result);
+                    if(empty($row))
+                    {
+                        header("Location: profile.php");
+                    }
+                    else
+                    {
+                        
+                    }
+                }
+{
             }
             echo "</table>";
             // Free result set

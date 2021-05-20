@@ -2,7 +2,8 @@
 <?php
 include 'connect.php';
 
-if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
+{
 
    
 
@@ -19,20 +20,55 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     $tempname = $_FILES["image"]["tmp_name"];
     $folder = "images/" . $filename;
 
+   
+    $education = $_POST['education'];
+    $skills = $_POST['skills'];
+    $resume = $_FILES["uploadresume"]["name"];
+    $tempname1 = $_FILES["uploadresume"]["tmp_name"];
+    $folder1 = "images/" . $resume;
 
+    
 
-    $query = "INSERT INTO `users`(`fname`, `lname`, `email`, `password`, `address`, `postcode`, `role`, `contact_no`, `photo`) 
-                    VALUES ('$firstName','$lastName','$email','$password','$address','$postcode','$role','$phoneNumber','$folder')";
+    if($role == "Job Recruiter")
+    {
 
-    if (mysqli_query($conn, $query)) {
-        echo "New record created successfully";
+        $query = "INSERT INTO `users`(`fname`, `lname`, `email`, `password`, `address`, `postcode`, `role`, `contact_no`, `photo`) 
+                        VALUES ('$firstName','$lastName','$email','$password','$address','$postcode','$role','$phoneNumber','$folder')";
+
+        if (mysqli_query($conn, $query)) 
+        {
+            echo "New record created successfully";
+            move_uploaded_file($tempname, $folder);
+            header('Location: index.php');
+        }
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+    }
+    else
+    {
+        $insert = "INSERT INTO `users`(`fname`, `lname`, `email`, `password`, `address`, `postcode`, `role`, `contact_no`, `photo`) 
+        VALUES ('$firstName','$lastName','$email','$password','$address','$postcode','$role','$phoneNumber','$folder')";
+        $query1=mysqli_query($conn, $insert);
         move_uploaded_file($tempname, $folder);
-      //  header('Location: login.php');
-    } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+
+        if($query1==1) 
+        {
+            $ins="INSERT INTO `job_seeker_details`(`resume_upload`, `education`, `skills`) VALUES ('$folder1','$education','$skills')";
+            if(mysqli_query($conn, $ins))
+            {
+                echo "New record created successfully";
+                move_uploaded_file($tempname1, $folder1);
+                header('Location: index.php');
+            }
+        }
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
     }
 }
-
 
 ?>
 
@@ -69,14 +105,22 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group"><input class="form-control" type="password" name="Confirm password" placeholder="Confirm Password"></div>
                 <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Address"></div>
                 <div class="form-group"><input class="form-control" type="text" name="postcode" placeholder="Postcode"></div>
-                <div class="form-group"><input class="form-control" type="text" name="phoneNumber" placeholder="phone number"></div>
+                <div class="form-group"><input class="form-control" type="text" name="phoneNumber" placeholder="Phone Number"></div>
                 <div class="form-group">
                     <label>Choose Role : </label>
-                    <select name="role">
-                        <option>Job Seeker</option>
-                        <option>Job Recruiter</option>
+                    <select name="role" id="role" onchange="display()">
+                        <option value=""></option>
+                        <option value="js">Job Seeker</option>
+                        <option value="jr">Job Recruiter</option>
                     </select>
                 </div>
+                <div class="custom-file" id="uploadresume" style="visibility: hidden;">
+                    <label >Upload resume </label>
+                    <input type="file" name="uploadresume" id="uploadresume">
+
+                </div>
+                <div class="form-group" style="visibility: hidden;"><input class="form-control" type="text" name="education" id="education" placeholder="Education"></div>
+                <div class="form-group" style="visibility: hidden;"><input class="form-control" type="text" name="skills" id="skills" placeholder="Skills"></div>
 
                 <div class="custom-file">
                     <input type="file" name="image" id="customFile">
@@ -101,6 +145,24 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/agency.js"></script>
+    <script>
+        function display()
+        {
+            var role1= document.getElementById("role");
+          
+            if(role1.value == "jr")
+            {
+                document.getElementById("uploadresume").style.visibility="hidden";
+                document.getElementById("education").style.visibility="hidden";
+                document.getElementById("skills").style.visibility="hidden";
+            }
+            else{
+                document.getElementById("uploadresume").style.visibility="visible";
+                document.getElementById("education").style.visibility="visible";
+                document.getElementById("skills").style.visibility="visible";
+            }
+        } 
+    </script>
     
 </body>
 

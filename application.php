@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['user_id']=$uid;
+$_SESSION['user_id'];
 echo $_SESSION['user_id'];
 include('connect.php');
 
