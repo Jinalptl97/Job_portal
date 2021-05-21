@@ -1,3 +1,34 @@
+<?php
+session_start();
+include('connect.php');
+$_SESSION['user_id'];
+
+$uid=$_SESSION['user_id'];
+echo $uid;
+
+if (isset($_POST['send']))
+{
+    $education = $_POST['education'];
+    $skills = $_POST['skills'];
+    $filename = $_FILES["resume"]["name"];
+    $tempname = $_FILES["resume"]["tmp_name"];
+    $folder1 = "images/" . $filename;
+   
+    $query = "INSERT INTO `job_seeker_details` (`user_id`, `resume_upload`, `education`, `skills`) VALUES ('$uid','$folder1','$education','$skills')";
+    if (mysqli_query($conn, $query)) 
+    {
+        echo $query;
+        echo "New record created successfully";
+        move_uploaded_file($tempname, $folder1);
+        header("Location:jobs.php");
+    }
+    else 
+    {
+        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    }
+}
+                            
+?>
 <!DOCTYPE html>
 <html>
 
@@ -19,6 +50,23 @@
 </head>
 
 <body>
+<div class="form-container">
+<div class="image-holder"></div>
+            <form method="post" name="contactForm" enctype="multipart/form-data" onsubmit="return(validateForm());">
+                
+                <div class="form-group"><input class="form-control" type="text" name="education" placeholder="Education"></div>
+                <div class="form-group"><input class="form-control" type="text" name="skills" placeholder="Skills"></div>
+                <div class="custom-file">
+                <label>Upload Resume</label>
+                    <input type="file" name="resume" id="customFile">
+
+                </div>
+                <br><br>
+
+                <div class="form-group"><button class="btn btn-primary btn-block" onclick="validationForm()" name="Send" type="submit">Send</button>
+                </div>
+            </form>	
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>

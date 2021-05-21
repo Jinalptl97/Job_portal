@@ -1,19 +1,23 @@
 <?php
-
+session_start();
 include_once('connect.php');
 
 
 
 if(isset($_POST['login']))
 {
+    
     $email = $_POST['email'];
     $password = md5($_POST['password']);
+    $sql= "SELECT role, user_id, email, password FROM users WHERE email = '$email' AND password = '$password' ";
+    echo $sql;
     $sql= "SELECT role, user_id, email, password FROM users WHERE Email = '$email' AND password = '$password' ";
     $result = mysqli_query($conn,$sql);
     $row = mysqli_fetch_array($result);
+    $uid=$row['user_id'];
+    $_SESSION['user_id']=$uid;
 	
-
-
+    
     if($row)
     {
         if($row['role']=="Job Recruiter")
@@ -63,20 +67,14 @@ if(isset($_POST['login']))
 
 <body id="page-top">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="#page-top">Easy jobs</a><span>It's Nice To Meet You</span><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+        <div class="container"><a class="navbar-brand" href="#page-top">Easy jobs</a><span><strong>It's Nice To Meet You</strong></span><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto text-uppercase">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Find_job.php">Find a JOB</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="Register.php">create account</a></li>
-<<<<<<< HEAD
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact us</a></li>
-=======
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="team.php">Team</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="contact.php">Contact us</a></li>
->>>>>>> 8767a765751451a77513e411cf8d220c3f4faa70
                 </ul>
             </div>
         </div>
@@ -89,7 +87,8 @@ if(isset($_POST['login']))
                         <h2 class="sr-only">Login Form</h2>
                         <div class="illustration"></div>
                         <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                        <div class="form-group"><button class="btn btn-primary btn-block" Name="login" type="submit">Log In</button></div><a class="forgot" href="#">Forgot your email or password?</a>
+                        <div class="form-group"><button class="btn btn-primary btn-block" Name="login" type="submit">Log In</button></div>
+                        <a class="forgot" href="forgotpassword.php">Forgot your email or password?</a>
                     </form>
                 </section>
 				

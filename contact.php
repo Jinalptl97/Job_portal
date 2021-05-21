@@ -28,8 +28,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading">Contact Us</h2>
-                    <h3 class="text-muted section-subheading">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="text-uppercase section-heading">GET IN TOUCH WITH US</h2><br>
+                     
                 </div>
             </div>
             <div class="row">

@@ -2,7 +2,8 @@
 <?php
 include 'connect.php';
 
-if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
+if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
+{
 
    
 
@@ -19,20 +20,21 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     $tempname = $_FILES["image"]["tmp_name"];
     $folder = "images/" . $filename;
 
-
-
     $query = "INSERT INTO `users`(`fname`, `lname`, `email`, `password`, `address`, `postcode`, `role`, `contact_no`, `photo`) 
-                    VALUES ('$firstName','$lastName','$email','$password','$address','$postcode','$role','$phoneNumber','$folder')";
+                        VALUES ('$firstName','$lastName','$email','$password','$address','$postcode','$role','$phoneNumber','$folder')";
 
-    if (mysqli_query($conn, $query)) {
-        echo "New record created successfully";
-        move_uploaded_file($tempname, $folder);
-      //  header('Location: login.php');
-    } else {
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
-    }
+        if (mysqli_query($conn, $query)) 
+        {
+            echo "New record created successfully";
+            move_uploaded_file($tempname, $folder);
+            header('Location: index.php');
+        }
+        else 
+        {
+            echo "Error: " . $query . "<br>" . mysqli_error($conn);
+        }
+
 }
-
 
 ?>
 
@@ -59,6 +61,7 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <section class="register-photo" style="height:70%">
         <div class="form-container">
             <div class="image-holder"></div>
+<<<<<<< HEAD
             <form method="post" name="contactForm" enctype="multipart/form-data">
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
@@ -89,14 +92,27 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="form-group">
                     <input class="form-control" type="text" name="phoneNumber" placeholder="phone number">
                 </div>
+=======
+            <form method="post" name="contactForm" enctype="multipart/form-data" onsubmit="return(validateForm());">
+                <h2 class="text-center"><strong>Create An Account	</strong></h2>
+                <div class="form-group"><input class="form-control" type="text" name="firstName" placeholder="First name"></div>
+                <div class="form-group"><input class="form-control" type="text" name="lastName" placeholder="last name"></div>
+                <div class="form-group"><input class="form-control" type="Email" name="email" placeholder="Email"></div>
+                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+                <div class="form-group"><input class="form-control" type="password" name="Confirm password" placeholder="Confirm Password"></div>
+                <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Address"></div>
+                <div class="form-group"><input class="form-control" type="text" name="postcode" placeholder="Postcode"></div>
+                <div class="form-group"><input class="form-control" type="text" name="phoneNumber" placeholder="Phone Number"></div>
+>>>>>>> 3334053d4b9c6e0215f9fb91f9081975c333d7d5
                 <div class="form-group">
                     <label>Choose Role : </label>
-                    <select name="role">
-                        <option>Job Seeker</option>
-                        <option>Job Recruiter</option>
+                    <select name="role" id="role">
+                        <option value=""></option>
+                        <option value="Job Seeker">Job Seeker</option>
+                        <option value="Job Recruiter">Job Recruiter</option>
                     </select>
                 </div>
-
+               
                 <div class="custom-file">
                     <input type="file" name="image" id="customFile">.
                     <small id="Errorfile" style="display:none;color:#F00"></small>
@@ -111,8 +127,9 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group"><button class="btn btn-primary btn-block" onClick="return validationForm()"name="submit" type="button">Sign Up</button>
                 </div>
-                <a class="already" href="login.php">You already have an account? Login here.</a>
-            </form>
+               
+                <a class="already" href="index.php">You already have an account? Login here.</a>
+            </form>	
         </div>
         </div>
     </section>
@@ -121,6 +138,7 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!--<script src="assets/js/agency.js"></script>-->
+    
     
 </body>
 

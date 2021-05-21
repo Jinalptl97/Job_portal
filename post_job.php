@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['user_id'];
+$uid=$_SESSION['user_id'];
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -63,8 +69,8 @@ if(isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
     
 
 
-    $query = "INSERT INTO `job_info`(`job_title`, `job_description`, `vacancy_no`, `experience`, `basic_pay`, `location`, `last_graduation`, `postcode`) 
-                    VALUES ('$job','$jobdescription','$vacancy','$experience','$basicpay','$location','$min_graduation','$postcode')";
+    $query = "INSERT INTO `job_info`(`user_id`,`job_title`, `job_description`, `vacancy_no`, `experience`, `basic_pay`, `location`, `last_graduation`, `postcode`) 
+                    VALUES ('$uid','$job','$jobdescription','$vacancy','$experience','$basicpay','$location','$min_graduation','$postcode')";
 
     if (mysqli_query($conn, $query))
     {
