@@ -3,7 +3,9 @@ session_start();
 include('connect.php');
 $_SESSION['user_id'];
 $uid=$_SESSION['user_id'];
+include('header.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -69,15 +71,7 @@ $uid=$_SESSION['user_id'];
                         $result = mysqli_query($conn,$sql);
                         $row1 = mysqli_fetch_array($result);
                         
-                        if(isset($row1)<0)
-                        {
-                           
-                            $alert= "<script type='text/javascript'>alert('Please Upload Resume First');</script>";
-                            echo $alert;
-                            echo "<div class='form-group'><a href='profile.php'>Upload Resume</a></div>";
-                           
-                        }
-                        else
+                        if(isset($row1)>0)
                         {
                             $insert = "INSERT INTO application(`user_id`, `job_id`, `date_apply`) VALUES ('$uid','$jobid',now())";  
                            
@@ -87,6 +81,15 @@ $uid=$_SESSION['user_id'];
                                 echo $alert1;
                                
                             }
+                           
+                           
+                           
+                        }
+                        else
+                        {
+                            $alert= "<script type='text/javascript'>alert('Please Upload Resume First');</script>";
+                            echo $alert;
+                            echo "<div class='form-group'><a href='profile.php'>Upload Resume</a></div>";
                         }
                     
 
@@ -117,5 +120,8 @@ $uid=$_SESSION['user_id'];
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/agency.js"></script>
+    <?php
+        include('footer.php');
+    ?>
 </body>
 </html>

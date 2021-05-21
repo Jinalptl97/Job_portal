@@ -1,7 +1,7 @@
 
 <?php
 include 'connect.php';
-
+include('header.php');
 if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
 {
 
@@ -57,7 +57,7 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
     <script type="text/javascript" src="validation.js"></script>
 </head>
 
-<body>
+<body id="page-top">
 
     <section class="register-photo" style="height:70%">
         <div class="form-container">

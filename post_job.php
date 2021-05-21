@@ -2,7 +2,7 @@
 session_start();
 $_SESSION['user_id'];
 $uid=$_SESSION['user_id'];
-
+include('header.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,6 +82,5 @@ if(isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
     }
 
 }
-
-
+    
 ?>

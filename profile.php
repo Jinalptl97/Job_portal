@@ -1,10 +1,10 @@
 <?php
 session_start();
 include('connect.php');
-$_SESSION['user_id'];
+include('header.php');
 
 $uid=$_SESSION['user_id'];
-echo $uid;
+
 
 if (isset($_POST['send']))
 {
@@ -13,8 +13,9 @@ if (isset($_POST['send']))
     $filename = $_FILES["resume"]["name"];
     $tempname = $_FILES["resume"]["tmp_name"];
     $folder1 = "images/" . $filename;
-   
+    echo $uid;
     $query = "INSERT INTO `job_seeker_details` (`user_id`, `resume_upload`, `education`, `skills`) VALUES ('$uid','$folder1','$education','$skills')";
+    echo $query;
     if (mysqli_query($conn, $query)) 
     {
         echo $query;
@@ -51,26 +52,30 @@ if (isset($_POST['send']))
 
 <body>
 <div class="form-container">
-<div class="image-holder"></div>
-            <form method="post" name="contactForm" enctype="multipart/form-data" onsubmit="return(validateForm());">
-                
-                <div class="form-group"><input class="form-control" type="text" name="education" placeholder="Education"></div>
-                <div class="form-group"><input class="form-control" type="text" name="skills" placeholder="Skills"></div>
-                <div class="custom-file">
+<div class="image-holder"></div>  <center>
+            <form method="post" name="contactForm" enctype="multipart/form-data" onsubmit="return(validateForm());" >
+              
+                <div class="form-group"><input  type="text" name="education" placeholder="Education"></div>
+                <div class="form-group"><input  type="text" name="skills" placeholder="Skills"></div>
+                <div >
                 <label>Upload Resume</label>
                     <input type="file" name="resume" id="customFile">
 
                 </div>
                 <br><br>
 
-                <div class="form-group"><button class="btn btn-primary btn-block" onclick="validationForm()" name="Send" type="submit">Send</button>
+                <div class="form-group"><button class="btn btn-primary btn-block" onclick="validationForm()" name="send" type="submit">Send</button>
                 </div>
-            </form>	
+               
+            </form>	 </center>
 </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/agency.js"></script>
+    <?php
+        include('footer.php');
+    ?>
 </body>
 
 </html>

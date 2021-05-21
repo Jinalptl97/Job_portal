@@ -1,3 +1,10 @@
+<?php
+session_start();
+$_SESSION['user_id'];
+
+include('connect.php');
+include('header.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -210,3 +217,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="assets/js/agency.js"></script>
+    <?php
+        include('footer.php');
+    ?>
