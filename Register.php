@@ -61,7 +61,6 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
     <section class="register-photo" style="height:70%">
         <div class="form-container">
             <div class="image-holder"></div>
-<<<<<<< HEAD
             <form method="post" name="contactForm" enctype="multipart/form-data">
                 <h2 class="text-center"><strong>Create</strong> an account.</h2>
                 <div class="form-group">
@@ -92,22 +91,11 @@ if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST")
                 <div class="form-group">
                     <input class="form-control" type="text" name="phoneNumber" placeholder="phone number">
                 </div>
-=======
-            <form method="post" name="contactForm" enctype="multipart/form-data" onsubmit="return(validateForm());">
-                <h2 class="text-center"><strong>Create An Account	</strong></h2>
-                <div class="form-group"><input class="form-control" type="text" name="firstName" placeholder="First name"></div>
-                <div class="form-group"><input class="form-control" type="text" name="lastName" placeholder="last name"></div>
-                <div class="form-group"><input class="form-control" type="Email" name="email" placeholder="Email"></div>
-                <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                <div class="form-group"><input class="form-control" type="password" name="Confirm password" placeholder="Confirm Password"></div>
-                <div class="form-group"><input class="form-control" type="text" name="address" placeholder="Address"></div>
-                <div class="form-group"><input class="form-control" type="text" name="postcode" placeholder="Postcode"></div>
-                <div class="form-group"><input class="form-control" type="text" name="phoneNumber" placeholder="Phone Number"></div>
->>>>>>> 3334053d4b9c6e0215f9fb91f9081975c333d7d5
+        
                 <div class="form-group">
                     <label>Choose Role : </label>
                     <select name="role" id="role">
-                        <option value=""></option>
+                        <option value="">Select Role</option>
                         <option value="Job Seeker">Job Seeker</option>
                         <option value="Job Recruiter">Job Recruiter</option>
                     </select>

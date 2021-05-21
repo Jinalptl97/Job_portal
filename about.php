@@ -1,3 +1,10 @@
+<?php
+session_start();
+$_SESSION['user_id'];
+
+include('connect.php');
+include('header.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -26,17 +33,12 @@
 </body>
 <section id="bout">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase">About</h2>
-                    <h3 class="text-muted section-subheading">.</h3>
-                </div>
-            </div>
+        
             <div class="row">
                 <div class="col-lg-12">
                     <ul class="list-group timeline">
                         <li class="list-group-item">
-                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="img/BLOG-IMAGE.jpg"></div>
+                            <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/BLOG-IMAGE.jpg"></div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
                                     <h4>2009-2011</h4>
@@ -85,7 +87,7 @@
                         </li>
                         <li class="list-group-item timeline-inverted">
                             <div class="timeline-image">
-                                <h4>Be Part<br>&nbsp;Of Our<br>&nbsp;Story!</h4>
+                                <h4>Be Part Of Our Story!</h4>
                             </div>
                         </li>
                     </ul>

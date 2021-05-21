@@ -24,23 +24,23 @@
     <section id="services">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="text-uppercase section-heading">Jobs</h2>
+                <div class="col-lg-12 text-center"></br>
+                    <h2 class="text-uppercase section-heading">Jobs</h2></br>
                     <h3 class="text-muted section-subheading">I believe that working with good people matters because then the work environment is good</h3>
                 </div>
-            </div>
+            </div></br>
             <div class="row text-center">
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Home Careers</h4>
-                    <p class="text-muted">Typical care assistant duties are wide ranging. The job revolves around helping clients with their immediate needs such as washing, dressing and maintaining their hygiene, as well as helping them with basic day-to-day or administrative tasks like paying bills.</p>
+                
                 </div>
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-laptop fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">Cleaning</h4>
-                    <p class="text-muted">A Cleaners role can vary depending on their working environment but in general their duties will include: Clean, stock and supply designated facility areas. Dusting, sweeping, vacuuming, mopping. Carry out deep cleaning and detailed cleaning tasks. Notify management of deficiencies or repairs required.</p>
+                 
                 </div>
                 <div class="col-md-4"><span class="fa-stack fa-4x"><i class="fa fa-circle fa-stack-2x text-primary"></i><i class="fa fa-lock fa-stack-1x fa-inverse"></i></span>
                     <h4 class="section-heading">security</h4>
-                    <p class="text-muted">Secures premises and personnel by patrolling property; monitoring surveillance equipment; inspecting buildings, equipment, and access points; permitting entry. Obtains help by sounding alarms. Prevents losses and damage by reporting irregularities; informing violators of policy and procedures; restraining trespassers.</p>
+                
                 </div>
             </div>
         </div>
